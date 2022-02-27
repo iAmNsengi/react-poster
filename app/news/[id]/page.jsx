@@ -1,5 +1,7 @@
 import React from "react";
 
+
+
 const SingleNews = ({ params }) => {
   const { id } = params;
 
