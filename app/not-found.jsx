@@ -3,12 +3,12 @@ import React from "react";
 
 const NotFoundPage = () => {
   return (
-    <div id="error">
+    <div className="error">
       <h1>Not Found</h1>
       <p>The requested resource couldn't be found!</p>
-      <li>
+      <p>
         <Link href={"/"}>Go Back Home</Link>
-      </li>
+      </p>
     </div>
   );
 };
