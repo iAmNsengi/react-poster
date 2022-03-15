@@ -1,10 +1,25 @@
 import NewsList from "@/components/NewsList";
-import { getNewsForYear } from "@/lib/news";
+import { getAvailableNewsYears, getNewsForYear } from "@/lib/news";
+import Link from "next/link";
 import React from "react";
 
 const FilteredNewsPage = ({ params }) => {
-  const newsYear = getNewsForYear(params.year);
-  return <NewsList news={newsYear} />;
+  const filter = params.filter;
+  console.log(filter);
+  const links = getAvailableNewsYears();
+  return (
+    <header id="archive-header">
+      <nav>
+        <ul>
+          {links.map((link) => (
+            <li key={link}>
+              <Link href={`/archive/${link}`}>{link} </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
+  );
 };
 
 export default FilteredNewsPage;
