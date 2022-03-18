@@ -6,6 +6,7 @@ import {
   getNewsForYearAndMonth,
 } from "@/lib/news";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import React from "react";
 
 const FilteredNewsPage = ({ params }) => {
@@ -33,7 +34,12 @@ const FilteredNewsPage = ({ params }) => {
   if (news && news.length > 0) {
     newsContent = <NewsList news={news} />;
   }
-
+  if (
+    (selectedYear && !getAvailableNewsYears().includes(+selectedYear)) ||
+    (selectedMonth &&
+      !getAvailableNewsMonths(selectedYear).includes(+selectedMonth))
+  )
+    return notFound();
   return (
     <>
       <header id="archive-header">
