@@ -20,9 +20,13 @@ const FilteredNewsPage = ({ params }) => {
     links = getAvailableNewsMonths(selectedYear);
   }
 
-  let newsContent = <p>No news found for the selected period!</p>;
+  let newsContent = selectedYear ? (
+    <p>No news found for the selected period!</p>
+  ) : (
+    <p>Please selected a year to load the archive data.</p>
+  );
 
-  if (selectedMonth) {
+  if (selectedYear && selectedMonth) {
     news = getNewsForYearAndMonth(selectedYear, selectedMonth);
     links = getAvailableNewsMonths(selectedYear);
   }
