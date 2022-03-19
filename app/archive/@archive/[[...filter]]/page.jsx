@@ -6,7 +6,6 @@ import {
   getNewsForYearAndMonth,
 } from "@/lib/news";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import React from "react";
 
 const FilteredNewsPage = ({ params }) => {
@@ -39,7 +38,7 @@ const FilteredNewsPage = ({ params }) => {
     (selectedMonth &&
       !getAvailableNewsMonths(selectedYear).includes(+selectedMonth))
   )
-    return notFound();
+    throw new Error("Filtering error, use a valid period.");
   return (
     <>
       <header id="archive-header">
