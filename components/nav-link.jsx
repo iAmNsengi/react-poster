@@ -8,7 +8,7 @@ const NavLink = ({ href }) => {
 
   return (
     <Link
-      href={href}
+      href={`/${href}`}
       className={pathName.startsWith(`/${href}`) ? "active" : undefined}
     >
       {`${href[0].toUpperCase()}${href.slice(1, href.length)}`}
