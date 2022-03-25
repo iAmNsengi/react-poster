@@ -1,4 +1,5 @@
 import { DUMMY_NEWS } from "@/dummy-news";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import React from "react";
 
@@ -11,10 +12,12 @@ const ImagePage = ({ params }) => {
 
   return (
     <>
-      <h2>Intercepted route</h2>
-      <div className="fullscreen-image">
-        <img src={`/images/news/${newsItem.image}`} alt={newsItem.title} />
-      </div>
+      <div className="modal-backdrop" />
+      <dialog className="modal" open>
+        <div className="fullscreen-image">
+          <img src={`/images/news/${newsItem.image}`} alt={newsItem.title} />
+        </div>
+      </dialog>
     </>
   );
 };
