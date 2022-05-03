@@ -1,0 +1,13 @@
+.site-logo {
+  font-size: 42px;
+  color: aquamarine;
+}
+.site-logo-span {
+  font-weight: 900;
+  color: orange;
+  font-size: 44px;
+}
+.mobile-brand .site-logo,
+.mobile-brand .site-logo-span {
+  font-size: 34px !important;
+}
