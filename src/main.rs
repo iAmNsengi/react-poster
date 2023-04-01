@@ -1,5 +1,13 @@
+use std::fmt;
+
 enum Gem {
         Diamond, Sapphire, Ruby, Topaz, Onyx, Jade
+    }
+
+    impl fmt::Display for Gem {
+        fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+            write!(f, "test");
+        }    
     }
 
 fn main() {
