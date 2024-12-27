@@ -3,15 +3,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const NavLink = ({ href }) => {
+const NavLink = ({ href, children }) => {
   const pathName = usePathname();
 
   return (
     <Link
-      href={href}
+      href={`/${href}`}
       className={pathName.startsWith(`/${href}`) ? "active" : undefined}
     >
-      {`${href[0].toUpperCase()}${href.slice(1, href.length)}`}
+      {children}
     </Link>
   );
 };
