@@ -20,16 +20,25 @@ const FilteredNewsPage = ({ params }) => {
     links = getAvailableNewsMonths(selectedYear);
   }
 
-  let newsContent = <p>No news found for the selected period!</p>;
+  let newsContent = selectedYear ? (
+    <p>No news found for the selected period!</p>
+  ) : (
+    <p>Please selected a year to load the archive data.</p>
+  );
 
-  if (selectedMonth) {
+  if (selectedYear && selectedMonth) {
     news = getNewsForYearAndMonth(selectedYear, selectedMonth);
     links = getAvailableNewsMonths(selectedYear);
   }
   if (news && news.length > 0) {
     newsContent = <NewsList news={news} />;
   }
-
+  if (
+    (selectedYear && !getAvailableNewsYears().includes(+selectedYear)) ||
+    (selectedMonth &&
+      !getAvailableNewsMonths(selectedYear).includes(+selectedMonth))
+  )
+    throw new Error("Filtering error, use a valid period.");
   return (
     <>
       <header id="archive-header">
